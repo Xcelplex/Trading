@@ -23,7 +23,7 @@ tempDict_lines = {}
 df_Close=[]
 df_Data = []
 num = 0
-st.write(df_Close)
+#st.write(df_Close)
 for i in ticker_list:
     data= yf.download(i,start_Date,end_Date)
     tempDict[i] = data
@@ -34,7 +34,7 @@ for i in ticker_list:
     df_Close= pd.concat(df_Data, axis=1)
     df_Close.index = df_Close.index.strftime('%d-%m-%y')
 
-st.write(df_Close.columns.to_list())
+#st.write(df_Close.columns.to_list())
 
 colors = plt.colors.qualitative.Antique
 for template in [ "plotly_dark"]:
@@ -44,4 +44,4 @@ for template in [ "plotly_dark"]:
     fig.update_layout(coloraxis = {'colorscale':'viridis'})
     
 
-fig.show()
+fig

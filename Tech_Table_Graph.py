@@ -22,7 +22,7 @@ tempDict_lines = {}
 df_Close=[]
 df_Data = []
 num = 0
-st.write(df_Close)
+#st.write(df_Close)
 for i in ticker_list:
     data= yf.download(i,start_Date,end_Date)
     #fig = px.line(data, x=data.index, y=data['Adj Close'], title=i)
@@ -37,11 +37,12 @@ for i in ticker_list:
 
 df_Close.insert(0, "Date", df_Close.index, True)
 
-st.write(df_Close)
+#st.write(df_Close)
 for template in [ "plotly_dark"]:
     fig = go.Figure(data=go.Table(header=dict(values= list(df_Close.columns)),
                               cells=dict(values = list(df_Close.T.values))))
     fig.update_layout(template=template)
     fig.update_layout(coloraxis = {'colorscale':'viridis'})
 #fig.update.update_layout()
-fig.show()
+#fig.show()
+fig
