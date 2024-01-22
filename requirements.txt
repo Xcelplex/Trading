@@ -4,4 +4,3 @@ datetime
 streamlit
 plotly.express
 yfinance
-plotly.figure_factory
