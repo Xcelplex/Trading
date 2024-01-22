@@ -1,6 +1,5 @@
 plotly
 pandas
-re
 datetime
 streamlit
 plotly.express
