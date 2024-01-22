@@ -10,12 +10,13 @@ import yfinance as yf
 import plotly.figure_factory as ff
 import plotly as plt
 
+
 today = date.today()
-date_Diff = today - timedelta(days=364)
+date_Diff = today - timedelta(days=90)
 start_Date = date_Diff
 end_Date = today
 #data= yf.download(ticker,start_Date,end_Date)
-st.title("Tech Stock Information-Graph")
+#st.title("Tech Stock Information-Graph")
 ticker_list = ["MSFT","AMD","AAPL","META","GOOGL","NVDA","PYPL","AMZN","INTC","CRM" ]
 data = []
 tempDict = {}
