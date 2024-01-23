@@ -10,7 +10,7 @@ import yfinance as yf
 import plotly.figure_factory as ff
 
 today = date.today()
-date_Diff = today - timedelta(days=90)
+date_Diff = today - timedelta(days=12)
 start_Date = date_Diff
 end_Date = today
 #data= yf.download(ticker,start_Date,end_Date)

@@ -12,9 +12,10 @@ import plotly as plt
 
 
 today = date.today()
-date_Diff = today - timedelta(days=90)
+date_Diff = today - timedelta(days=364)
 start_Date = date_Diff
 end_Date = today
+st.write(today)
 #data= yf.download(ticker,start_Date,end_Date)
 #st.title("Tech Stock Information-Graph")
 ticker_list = ["MSFT","AMD","AAPL","META","GOOGL","NVDA","PYPL","AMZN","INTC","CRM" ]
@@ -33,15 +34,19 @@ for i in ticker_list:
     df_Close.rename(columns={'Close':i}, inplace = True)
     df_Data.append(df_Close)
     df_Close= pd.concat(df_Data, axis=1)
-    df_Close.index = df_Close.index.strftime('%d-%m-%y')
+    df_Close.index = df_Close.index.strftime('%d%m%y')
 
 #st.write(df_Close.columns.to_list())
+df_Close.insert(0, "Date", df_Close.index, True)
+df_Close['Date'] = pd.to_datetime(df_Close["Date"], format = "%d%m%y")
+st.write(df_Close)
 
 colors = plt.colors.qualitative.Antique
 for template in [ "plotly_dark"]:
 
     #fig = px.line(df_Close.index, y=df_Close.columns)
-    fig = px.bar(df_Close, x=df_Close.index, y=df_Close.columns,color_discrete_sequence=colors,template=template)
+    fig = px.bar(df_Close, x= df_Close['Date'], y=df_Close.columns,color_discrete_sequence=colors,template=template)
+    #fig = px.line(df_Close, x=df_Close.index, y=df_Close.columns, color_discrete_sequence=colors, template=template)
     fig.update_layout(coloraxis = {'colorscale':'viridis'})
     
 
