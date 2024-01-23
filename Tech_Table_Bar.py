@@ -15,7 +15,7 @@ today = date.today()
 date_Diff = today - timedelta(days=364)
 start_Date = date_Diff
 end_Date = today
-st.write(today)
+#st.write(today)
 #data= yf.download(ticker,start_Date,end_Date)
 #st.title("Tech Stock Information-Graph")
 ticker_list = ["MSFT","AMD","AAPL","META","GOOGL","NVDA","PYPL","AMZN","INTC","CRM" ]
@@ -39,7 +39,7 @@ for i in ticker_list:
 #st.write(df_Close.columns.to_list())
 df_Close.insert(0, "Date", df_Close.index, True)
 df_Close['Date'] = pd.to_datetime(df_Close["Date"], format = "%d%m%y")
-st.write(df_Close)
+#st.write(df_Close)
 
 colors = plt.colors.qualitative.Antique
 for template in [ "plotly_dark"]:
