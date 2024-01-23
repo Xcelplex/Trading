@@ -41,13 +41,13 @@ df_Close.insert(0, "Date", df_Close.index, True)
 df_Close['Date'] = pd.to_datetime(df_Close["Date"], format = "%d%m%y")
 #st.write(df_Close)
 
-colors = plt.colors.qualitative.Antique
+colors = plt.colors.qualitative.Prism
 for template in [ "plotly_dark"]:
 
     #fig = px.line(df_Close.index, y=df_Close.columns)
     fig = px.bar(df_Close, x= df_Close['Date'], y=df_Close.columns,color_discrete_sequence=colors,template=template)
     #fig = px.line(df_Close, x=df_Close.index, y=df_Close.columns, color_discrete_sequence=colors, template=template)
-    fig.update_layout(coloraxis = {'colorscale':'viridis'})
+    fig.update_layout(coloraxis = {'colorscale':'viridis'}, width = 800)
     
 
 fig
