@@ -1,0 +1,125 @@
+<!Doctype Html>
+<html target="es">
+    <head>
+        
+        <meta charset="utf-8">
+        <meta name = "viewport" content = "width=device-width,initial-scaled=1.0">
+        <title>Tech Trends and Analytics Visual Panel</title>
+        <link rel= "stylesheet" href="index.css">
+        <!----Material Icons-->
+        <link href = "https: //fonts.google.com/css2?family=Montserrat: wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!---Material Icons--->
+        <link href="https: //fonts.googleapis.com/icon?family=material-icons+Outlined" rel="stylesheet">
+    </head>    
+    <body>
+        <!--Dividing the webpage in grids (header,main and side bar)-->
+        <div class = "grid-container">
+        <!--Defining the header section-->
+        <header class = "header"></header>
+            <header class="header-title"><h1>Xcelplex</h1></header>
+            <div class = "menu-icon" onclick="openSidebar()">
+            <span class = "material-icons-outlined">Home</span>
+            </div>
+            <div class ="header-left"></div>
+            <div class ="header-right">
+            </div>
+        <!--Defining the siderbad section-->
+        <aside id = "sidebar">
+        <div class="sidebar-title">
+            <div class="sidebar-brand">
+                <span class="material-icons-outlined"></span>
+            </div>
+            <span class="material-icons-outlined" onclick="closeSideBar()"></span>
+            </div>
+            
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item"><span class="material-icons-outlined"><small><a href="https://www.xcelplex.com" style="color:rgb(107, 103, 85)">Home</a></small></span></li>
+            <li class="sidebar-list-item"><span class="material-icons-outlined"><small><a href="www.xcelplex.com" style="color:rgb(107, 103, 85)">Dashboard</a></small></span></li>
+            <li class="sidebar-list-item"><span class="material-icons-outlined"><small><a href="www.xcelplex.com" style="color:rgb(107, 103, 85)">Chat with Data</a></small></span></li>
+            <li class="sidebar-list-item"><span class="material-icons-outlined"><small><a href="www.xcelplex.com" style="color:rgb(107, 103, 85)">Predictive Analytics</a></small></span></li>
+            <li class="sidebar-list-item"><span class="material-icons-outlined"><small><a href="www.xcelplex.com" style="color:rgb(107, 103, 85)">Login</a></small></span></li>
+
+        </ul>
+        
+        </aside>
+        <!--Defining the main section--->
+        <main class = "main-container">
+
+        <div class="main-title">
+            <h2>Tech Trends and Analytics Visual Panel</h2></div>
+            <div class ="main-head-graphs" style = "height:auto; width:auto; overflow: hidden;">
+                <div>
+                <h3>Tech Stock Daily Performance- Weekly</h3>
+                <iframe src="https://trading-hlpave6ploldzn2g6rjesn.streamlit.app/?someparam=value&embedded=true" title="Tech Stock Daily Performance"  width="100%" height="500" style="border:1px solid black;">
+                </iframe>
+                </div>
+                <div>
+                <h3>Tech Stock Performance Trend -Annual</h3>
+                <iframe src="https://trading-8rqjpprupvfwhxbbdwseaf.streamlit.app/?someparam=value&embedded=true" title="Tech Stock Performance Trend"  embeded = "True" width="100%" height="500" style="border:1px solid black;">
+                </iframe>
+                </div>
+     
+            </div>
+            <div class="main-cards">
+            <div class="card">
+                <div class="card-inner">
+                    <h3>Cloud Leader</h3>
+                    <span class="material-icons-outlined"></span>
+                </div>
+                <h1>AWS</h1>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <h3>Cyber Security Leader</h3>
+                    <span class="material-icons-outlined"></span>
+                </div>
+                <h1>Palo Alto</h1>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <h3>AI Leader</h3>
+                    <span class="material-icons-outlined"></span>
+                </div>
+                <h1>Microsoft/Google</h1>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <h3>Blockchain</h3>
+                    <span class="material-icons-outlined"></span>
+                </div>
+                <h1>IBM</h1>
+            </div>
+        
+
+            </div>
+            
+            <div>
+                <h3>Trends in Technology</h3>
+                <iframe src="https://chart-studio.plotly.com/~xcelplex/73.embed" title="Second Quarter Results"  width="100%" height="500" style="border:1px solid black;">
+                </iframe>
+            </div>
+            <div class ="main-head-graphs">
+                <div>
+                <h3>Stocks Performance</h3>
+                <iframe src="https://chart-studio.plotly.com/~xcelplex/170.embed" title="Best Performing Tech Stocks of 2023"  width="100%" height="500" style="border:1px solid black;">
+                </iframe>
+                </div>
+                <div>
+                <h3>Quarterly Revenue Update</h3>
+                <iframe src="https://chart-studio.plotly.com/~xcelplex/162.embed" title="Second Quarter Results"  width="100%" height="500" style="border:1px solid black;">
+                </iframe>
+                </div>
+     
+            </div>
+     
+    </main>
+    </div>
+        <script src = "index.js"></script>
+    </body>
+
+
+</html>
+
+</Doc>
