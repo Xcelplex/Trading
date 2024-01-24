@@ -41,7 +41,7 @@ df_Close.insert(0, "Date", df_Close.index, True)
 #st.write(df_Close)
 for template in [ "plotly_dark"]:
     fig = go.Figure(data=go.Table(header=dict(values= list(df_Close.columns), align = 'left', fill_color = '#1D6270'),
-                              cells=dict(values = df_Close.transpose().values.tolist(), align='left',fill_color = '#606060',font_size=8, height = 25)))
+                              cells=dict(values = df_Close.transpose().values.tolist(), align='left',fill_color = '#606060',font_size=9, height = 30)))
     fig.update_layout(template=template)
     fig.update_layout( coloraxis = {'colorscale':'viridis'})
 #fig.update.update_layout()
