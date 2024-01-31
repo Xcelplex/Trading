@@ -93,7 +93,7 @@ st.write(data)
 
 st.write("Forecasted Values and Trends ")
 
-st.write(forecast)
+#st.write(forecast)
 forecast = forecast.rename(columns={"ds": "Time/Date"})
 forecast = forecast.rename(columns={"yhat": "Closing Price"})
 st.write(forecast)
