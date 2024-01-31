@@ -4,3 +4,4 @@ datetime
 streamlit
 plotly.express
 yfinance
+prophet
