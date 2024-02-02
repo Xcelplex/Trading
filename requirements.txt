@@ -5,3 +5,9 @@ streamlit
 plotly.express
 yfinance
 prophet
+openai
+os
+pandasai
+pandasai.llm
+SmartDataframe
+OpenAI
