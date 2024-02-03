@@ -55,7 +55,8 @@ st.write(query)
 #fig = px.line(data_Share_Value, x = data_Share_Value.index, y = data_Share_Value, title = "Share Value Trend")
 #fig
 #LLM API for converting chat to dataframe/pandas commands
-openai.api_key = ("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")
+#openai.api_key = ("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")
+openai.api_key = st.secrets["OpenAI_API_Key"]
 llm = OpenAI(openai.api_key)
 #llm = OpenAI(api_token=os.environ["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"])
 query_engine_Stock  = SmartDataframe(df_Stock, config={"llm":llm})
