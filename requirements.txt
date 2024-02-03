@@ -7,6 +7,6 @@ yfinance
 prophet
 openai
 pandasai
-pandasai.llm
+pandasai
 SmartDataframe
 OpenAI
