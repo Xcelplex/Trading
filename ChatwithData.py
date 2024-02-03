@@ -1,4 +1,4 @@
-import os 
+
 import streamlit as st
 #import pandasai from PandasAI
 from pandasai import SmartDataframe
