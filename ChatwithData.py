@@ -18,7 +18,7 @@ start_Date = "2021-12-1"
 end_Date = "2022-12-1"
 
 #taking the input of the values from the side bar
-st.title("Chat with your Data - GenAI Powered Data Query Tool")
+st.title("Chat With Data - GenAI Powered Data Query Tool")
 st.write("Enter the Stock Symbol/Ticker and Period in side bar to start quering the information about the data")
 st.write("Currently Only available for Premium Users - Contact us for more information")
 ticker= st.sidebar.text_input("Stock Symbol/Ticker", default_Ticker)
@@ -67,6 +67,6 @@ answer_data = query_engine_Stock.chat(query)
 answer_data_QF = query_engine_QF.chat(query)
 answer_data_IS = query_engine_IS.chat(query)
 answer_data_SV = query_engine_SV.chat(query)
-st.write(answer_data)
+#st.write(answer_data)
 #st.write(answer_data_QF)
 
