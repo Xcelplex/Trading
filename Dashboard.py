@@ -11,6 +11,7 @@ import plotly.graph_objects as go
 
 
 
+
 def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     heatmap = alt.Chart(input_df).mark_rect().encode(
             y=alt.Y(f'{input_y}:O', axis=alt.Axis(title="Date", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
@@ -65,7 +66,7 @@ with st.sidebar:
     #end_Date =st.sidebar.text_input("End Date", today)
     data_Stock = yf.download(ticker, start_Date, end_Date)
 
-
+#######leaving this list option as it is and adding only one ticker for now, incase a default view is required in future for multiple tickers """"""""""
 ticker_List = [ticker]
 for i in ticker_List:
     #st.write(i)
@@ -110,7 +111,7 @@ for i in ticker_List:
 
 #Ex_Incm= df_Incm.to_excel('finance_income_data.xlsx')
 #Ex_Stock=df_Stock.to_excel('finance_stock_data.xlsx')
-col1 = st.columns((5,5,5), gap = 'medium' )
+col1 = st.columns((5,5,5,5,5), gap = 'medium' )
 
 with col1[0] : 
     #########Yearly Revenue Loss/Gain ##################################
@@ -136,10 +137,42 @@ with col1[2]:
     stock_Price_GL = round(stock_Price_GL,2)
     label_SP = f'{stock_Price_GL}%'
     st.metric(label = ticker, value = stock_Price, delta = label_SP )
+with col1[3]:
+    st.markdown('Company Performance')
+    company_Performance = (df_Incm.iloc[:,0].loc['EBITDA']/df_Incm.iloc[:,0].loc['Total Revenue'])*100
+    #st.write(company_Performance)
+    if (company_Performance < 10):
+            st.subheader('OK')
+    if (company_Performance > 10 and company_Performance < 30):
+        st.subheader('GOOD')
+    else:
+        st.subheader('VERY GOOD')
+with col1[4]:
+    st.markdown('Company Confidence')
+    company_Rev_F1 = ((df_Revenue.iloc[:,0].iloc[0]-df_Revenue.iloc[:,0].iloc[1])/df_Revenue.iloc[:,0].iloc[1])*100
+    company_Rev_F2 = ((df_Revenue.iloc[:,0].iloc[1]-df_Revenue.iloc[:,0].iloc[2])/df_Revenue.iloc[:,0].iloc[2])*100
+    company_Rev_F3 = ((df_Revenue.iloc[:,0].iloc[1]-df_Revenue.iloc[:,0].iloc[2])/df_Revenue.iloc[:,0].iloc[2])*100
+    company_Rev_AV = (company_Rev_F1 + company_Rev_F2 +company_Rev_F3)/3
+    company_Per_F4 = (df_Incm.iloc[:,0].loc['EBITDA']/df_Incm.iloc[:,0].loc['Total Revenue'])*100
+    company_Per_F5 = (df_Incm.iloc[:,1].loc['EBITDA']/df_Incm.iloc[:,1].loc['Total Revenue'])*100
+    company_Per_F6 = (df_Incm.iloc[:,2].loc['EBITDA']/df_Incm.iloc[:,2].loc['Total Revenue'])*100
+    company_Per_AV = (company_Per_F4 + company_Per_F5 +company_Per_F6)/3
+
+    if (company_Rev_AV < 0 and company_Per_AV < 10):
+        st.subheader('Average')
+    if (company_Rev_AV > 0 and company_Per_AV > 10 and company_Per_AV < 30):
+        st.subheader('High')
+    if (company_Rev_AV < 0 and company_Per_AV > 10 and company_Per_AV < 30):
+        st.subheader('High')
+    if (company_Rev_AV > 10 and company_Per_AV > 30):
+        st.subheader('Very High')
+    if (company_Rev_AV < 10 and company_Per_AV > 30):
+        st.subheader('Very High')
+    
 
 st.markdown('---')
 
-col2 = st.columns(( 5,5,2), gap = 'medium')
+col2 = st.columns(( 5,5), gap = 'medium')
 
 with col2[0]:
 
@@ -189,44 +222,7 @@ with col2[1]:
     fig1.layout.height = 350
     fig1
 
-with col2[2]: 
-    st.markdown("COMPANY STATS")
-    st.markdown("EBITDA Margin")
-    margin_EBITDA = df_Incm.iloc[:,0].loc['EBITDA'] / df_Incm.iloc[:,0].loc['Total Revenue']
-    margin_EBITDA = round(margin_EBITDA, 3)
-    st.subheader(margin_EBITDA)
-    st.markdown('---')
-    st.markdown("Company Performance")
-    company_Performance = (df_Incm.iloc[:,0].loc['EBITDA']/df_Incm.iloc[:,0].loc['Total Revenue'])*100
-    #st.write(company_Performance)
-    if (company_Performance < 10):
-            st.subheader('OK')
-    if (company_Performance > 10 and company_Performance < 30):
-        st.subheader('GOOD')
-    else:
-        st.subheader('VERY GOOD')
-    st.markdown('---')
-    st.markdown('Company Confidence')
-    
-    company_Rev_F1 = ((df_Revenue.iloc[:,0].iloc[0]-df_Revenue.iloc[:,0].iloc[1])/df_Revenue.iloc[:,0].iloc[1])*100
-    company_Rev_F2 = ((df_Revenue.iloc[:,0].iloc[1]-df_Revenue.iloc[:,0].iloc[2])/df_Revenue.iloc[:,0].iloc[2])*100
-    company_Rev_F3 = ((df_Revenue.iloc[:,0].iloc[1]-df_Revenue.iloc[:,0].iloc[2])/df_Revenue.iloc[:,0].iloc[2])*100
-    company_Rev_AV = (company_Rev_F1 + company_Rev_F2 +company_Rev_F3)/3
-    company_Per_F4 = (df_Incm.iloc[:,0].loc['EBITDA']/df_Incm.iloc[:,0].loc['Total Revenue'])*100
-    company_Per_F5 = (df_Incm.iloc[:,1].loc['EBITDA']/df_Incm.iloc[:,1].loc['Total Revenue'])*100
-    company_Per_F6 = (df_Incm.iloc[:,2].loc['EBITDA']/df_Incm.iloc[:,2].loc['Total Revenue'])*100
-    company_Per_AV = (company_Per_F4 + company_Per_F5 +company_Per_F6)/3
 
-    if (company_Rev_AV < 0 and company_Per_AV < 10):
-        st.subheader('Average')
-    if (company_Rev_AV > 0 and company_Per_AV > 10 and company_Per_AV < 30):
-        st.subheader('High')
-    if (company_Rev_AV < 0 and company_Per_AV > 10 and company_Per_AV < 30):
-        st.subheader('High')
-    if (company_Rev_AV > 10 and company_Per_AV > 30):
-        st.subheader('Very High')
-    if (company_Rev_AV < 10 and company_Per_AV > 30):
-        st.subheader('Very High')
 
 
     st.markdown('---')
@@ -251,6 +247,12 @@ with col3[1]:
         
         
     #for i in range(10):
+
+
+
+
+
+
 
 
 
