@@ -222,14 +222,6 @@ with col2[1]:
     fig1.layout.height = 350
     fig1
 
-
-
-
-    st.markdown('---')
-
-
-
-
 st.markdown("---")
      
 col3 = st.columns((5,5,5), gap = 'medium')
