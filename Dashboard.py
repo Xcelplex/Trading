@@ -8,8 +8,6 @@ from datetime import timedelta, date, time
 import altair as alt
 import plotly as plt
 import plotly.graph_objects as go
-from stocknews import StockNews
-from streamlit_card import card
 
 
 
