@@ -61,8 +61,8 @@ df_Q_Revenue_Data=[]
 with st.sidebar:
     st.title('Company Financial Dashboard')
     ticker = st.sidebar.text_input("Stock Symbol/Ticker", default_Ticker)
-    start_Date=st.sidebar.text_input("Start Date", end_Date)
-    end_Date =st.sidebar.text_input("End Date", today)
+    #start_Date=st.sidebar.text_input("Start Date", end_Date)
+    #end_Date =st.sidebar.text_input("End Date", today)
     data_Stock = yf.download(ticker, start_Date, end_Date)
 
 
