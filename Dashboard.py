@@ -108,8 +108,8 @@ for i in ticker_List:
 
 
 
-Ex_Incm= df_Incm.to_excel('finance_income_data.xlsx')
-Ex_Stock=df_Stock.to_excel('finance_stock_data.xlsx')
+#Ex_Incm= df_Incm.to_excel('finance_income_data.xlsx')
+#Ex_Stock=df_Stock.to_excel('finance_stock_data.xlsx')
 col1 = st.columns((5,5,5), gap = 'medium' )
 
 with col1[0] : 
