@@ -8,9 +8,11 @@ from datetime import timedelta, date, time
 import altair as alt
 import plotly as plt
 import plotly.graph_objects as go
+from nixtla import NixtlaClient
 
 
-
+#Setting API Keys 
+nixtla_client = NixtlaClient(api_key = "nixak-D2Wuj7TvEPvUFA6KT9vR9kwyNysYEGQjvDbvkQ8hYHNTcDBSsA255FWc9aEJhc1y7qi5wz93OJzWvYmn")
 
 def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     heatmap = alt.Chart(input_df).mark_rect().encode(
@@ -107,8 +109,29 @@ for i in ticker_List:
     df_Q_Revenue_Data.append(df_Quarterly_Revenue)
     df_Q_Revenue = pd.concat(df_Q_Revenue_Data, axis=1)
 
+    #GenAI based Stock Price Forecast
+    data_GenAI_Stock = yf.download(i, period = "1mo")
+    df_GenAI_Stock = pd.DataFrame(data_GenAI_Stock['Close'])
+    df_GenAI_Stock.rename(columns={'Close':'value'}, inplace = True)
+    df_GenAI_Stock.reset_index(inplace= True)
+    timegpt_fcst_df_stock = nixtla = nixtla_client.forecast(df=df_GenAI_Stock, h=3500, freq = 'H', time_col = 'Date', target_col = 'value')
+    #nixtla_client.plot(df,timegpt_fcst_df_stock, time_col = 'Date', target_col = 'value')
 
+    #GenAI based Quarterly Revenue Forecast 
+    data_GenAI_QRev = yf.download(i, period = "1mo")
+    df_GenAI_QRev = pd.DataFrame(data_GenAI_QRev['Close'])
+    df_GenAI_QRev.rename(columns={'Close':'value'}, inplace = True)
+    df_GenAI_QRev.reset_index(inplace= True)
+    timegpt_fcst_df_QRev = nixtla = nixtla_client.forecast(df=df_GenAI_QRev, h=12, freq = 'MS', time_col = 'Date', target_col = 'value')
+    
+    #GenAI based Yearly Revenue Forecast
+    data_GenAI_YRev = yf.download(i, period = "1mo")
+    df_GenAI_YRev = pd.DataFrame(data_GenAI_YRev['Close'])
+    df_GenAI_YRev.rename(columns={'Close':'value'}, inplace = True)
+    df_GenAI_YRev.reset_index(inplace= True)
+    timegpt_fcst_df_YRev = nixtla = nixtla_client.forecast(df=df_GenAI_YRev, h=36, freq = 'MS', time_col = 'Date', target_col = 'value', model = 'timegpt-1-long-horizon')
 
+st.title('CURRENT FINANCIAL STATS')
 #Ex_Incm= df_Incm.to_excel('finance_income_data.xlsx')
 #Ex_Stock=df_Stock.to_excel('finance_stock_data.xlsx')
 col1 = st.columns((5,5,5,5,5), gap = 'medium' )
@@ -222,10 +245,35 @@ with col2[1]:
     fig1.layout.height = 350
     fig1
 
+
+st.markdown('---')
+
+st.title('GenAI Based Generic Forecast')
+st.markdown('Not Including External Influcencing Factors and Parameters')
+col3 = st.columns((5,5,5), gap = 'medium')
+with col3[0]:
+    st.markdown("Stock Price Forecast")
+
+    fig5 = nixtla_client.plot(df_GenAI_Stock,timegpt_fcst_df_stock, time_col = 'Date', target_col = 'value')
+    #fig5.update_layout(coloraxis = {'colorscale':'viridis'})
+    #fig5.layout.width = 700
+    #fig5.layout.height = 350
+
+    fig5
+with col3[1]:
+    st.markdown("Quarterly Revenue Performance Forecast")
+    fig6 = nixtla_client.plot(df_GenAI_QRev,timegpt_fcst_df_QRev, time_col = 'Date', target_col = 'value')
+    fig6
+with col3[2]:
+    st.markdown("Yearly Revenue Performance Forecase")
+    fig7 = nixtla_client.plot(df_GenAI_YRev,timegpt_fcst_df_YRev, time_col = 'Date', target_col = 'value')
+    fig7 
+
+
 st.markdown("---")
      
-col3 = st.columns((5,5,5), gap = 'medium')
-with col3[1]:
+col4 = st.columns((5,5,5), gap = 'medium')
+with col4[1]:
     st.markdown('Copyright © 2023-24 Xcelplex LTD - Registeration Number - 14532208 (London, UK)')
 
 
@@ -239,12 +287,6 @@ with col3[1]:
         
         
     #for i in range(10):
-
-
-
-
-
-
 
 
 
