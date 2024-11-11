@@ -9,3 +9,4 @@ openai
 pandasai
 nixtla
 langchain
+vaderSentiment
