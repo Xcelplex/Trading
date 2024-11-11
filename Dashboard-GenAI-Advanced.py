@@ -421,7 +421,8 @@ with col2[1]:
 
 st.markdown('---')
 
-st.title('GenAI Based Advanced Level Company Performance Forecast')
+#st.title('GenAI Based Advanced Level Company Performance Forecast')
+st.markdown("GENAI BASED ADVANCED LEVEL COMPANY PERFORMANCE")
 col4 = st.columns((7,20,3), gap = 'medium')
 with col4[0]:
     st.markdown("Company Performance Forecast")
