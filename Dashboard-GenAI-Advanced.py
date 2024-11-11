@@ -248,7 +248,7 @@ for i in ticker_List:
     df["Date"]  = Date
     df.set_index('Date')
     df['Date'] = pd.to_datetime(df['Date'])
-    df_TimeGPT = pd.merge(adata_GenAI,df,on='Date',how='left').fillna(0.00001)
+    df_TimeGPT = pd.merge(adata_GenAI,df,on='Date',how='left').fillna(0)
     df_TimeGPT['unique_id'] = "XCEL"
 
     #lower score column names title and description corresponds to the fields extracted from yfinance
