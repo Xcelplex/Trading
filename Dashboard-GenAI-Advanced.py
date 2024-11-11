@@ -8,7 +8,6 @@ from datetime import timedelta, date, time
 import altair as alt
 import plotly as plt
 import plotly.graph_objects as go
-from nixtla import NixtlaClient
 import os
 from openai import OpenAI 
 from langchain.agents import AgentType, initialize_agent
@@ -118,7 +117,7 @@ for i in ticker_List:
     df_GenAI_Stock = pd.DataFrame(data_GenAI_Stock['Close'])
     df_GenAI_Stock.rename(columns={'Close':'value'}, inplace = True)
     df_GenAI_Stock.reset_index(inplace= True)
-    timegpt_fcst_df_stock = nixtla = nixtla_client.forecast(df=df_GenAI_Stock, h=3500, freq = 'H', time_col = 'Date', target_col = 'value')
+    #timegpt_fcst_df_stock = nixtla = nixtla_client.forecast(df=df_GenAI_Stock, h=3500, freq = 'H', time_col = 'Date', target_col = 'value')
     #nixtla_client.plot(df,timegpt_fcst_df_stock, time_col = 'Date', target_col = 'value')
 
     #GenAI based Quarterly Revenue Forecast 
@@ -126,14 +125,14 @@ for i in ticker_List:
     df_GenAI_QRev = pd.DataFrame(data_GenAI_QRev['Close'])
     df_GenAI_QRev.rename(columns={'Close':'value'}, inplace = True)
     df_GenAI_QRev.reset_index(inplace= True)
-    timegpt_fcst_df_QRev = nixtla = nixtla_client.forecast(df=df_GenAI_QRev, h=12, freq = 'MS', time_col = 'Date', target_col = 'value')
+    #timegpt_fcst_df_QRev = nixtla = nixtla_client.forecast(df=df_GenAI_QRev, h=12, freq = 'MS', time_col = 'Date', target_col = 'value')
     
     #GenAI based Yearly Revenue Forecast
     data_GenAI_YRev = yf.download(i, period = "1mo")
     df_GenAI_YRev = pd.DataFrame(data_GenAI_YRev['Close'])
     df_GenAI_YRev.rename(columns={'Close':'value'}, inplace = True)
     df_GenAI_YRev.reset_index(inplace= True)
-    timegpt_fcst_df_YRev = nixtla = nixtla_client.forecast(df=df_GenAI_YRev, h=36, freq = 'MS', time_col = 'Date', target_col = 'value', model = 'timegpt-1-long-horizon')
+    #timegpt_fcst_df_YRev = nixtla = nixtla_client.forecast(df=df_GenAI_YRev, h=36, freq = 'MS', time_col = 'Date', target_col = 'value', model = 'timegpt-1-long-horizon')
 
     #GenAI Based Advanced Level Forecast
     news_Ticker= yf.Ticker(i)
@@ -421,7 +420,7 @@ with col2[1]:
 
 
 st.markdown('---')
-
+'''
 st.title('GenAI Based Generic Forecast')
 st.markdown('Excluding External Influcencing Factors and Parameters')
 col3 = st.columns((5,5,5), gap = 'medium')
@@ -445,6 +444,7 @@ with col3[2]:
 
 
 st.markdown("---")
+'''
 st.title('GenAI Based Advanced Level Company Performance Forecast')
 col4 = st.columns((7,20,3), gap = 'medium')
 with col4[0]:
