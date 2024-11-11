@@ -10,4 +10,3 @@ pandasai
 nixtla
 langchain
 vaderSentiment
-nixtla_client
