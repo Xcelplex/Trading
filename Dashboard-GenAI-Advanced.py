@@ -260,7 +260,7 @@ for i in ticker_List:
 
     #getting the mean values from the columns, then calculating the average of those columns and then adding that to SA_News of the column.
     #Diving it by factor .02 (common denominator value extracted from the columns of SA_News)
-    df_TimeGPT.loc[len(df_TimeGPT)-1,"Close"]=df_TimeGPT.loc[len(df_TimeGPT)-1, "Close"] + (df_TimeGPT.loc[len(df_TimeGPT)-1,"Close"]*df_TimeGPT.loc[len(df_TimeGPT)-1,"SA_News"]*2)
+    #df_TimeGPT.loc[len(df_TimeGPT)-1,"Close"]=df_TimeGPT.loc[len(df_TimeGPT)-1, "Close"] + (df_TimeGPT.loc[len(df_TimeGPT)-1,"Close"]*df_TimeGPT.loc[len(df_TimeGPT)-1,"SA_News"]*2)
     df_TimeGPT_NCol = df_TimeGPT.drop(columns = ["News", "title","description"])
     df_TimeGPT_NCol = df_TimeGPT_NCol[['unique_id','Date','Close','SA_News','Negative','Neutral','Positive']]
     df_TimeGPT_NCol_Avg = np.around(np.mean( np.nanmean(df[['SA_News','Negative', 'Neutral', 'Positive']], axis=0),axis =0), decimals = 4)
