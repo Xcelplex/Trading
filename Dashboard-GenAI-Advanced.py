@@ -13,7 +13,6 @@ import os
 from openai import OpenAI 
 from langchain.agents import AgentType, initialize_agent
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nixtla import NixtlaClient
 
 
