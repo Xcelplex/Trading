@@ -253,7 +253,7 @@ for i in ticker_List:
 
     #lower score column names title and description corresponds to the fields extracted from yfinance
     #Concatinating two tables
-    df_TimeGPT = pd.concat([df_TimeGPT, pd.DataFrame(df_TimeGPT.iloc[-1])], ignore_index=True)
+    #df_TimeGPT = pd.concat([df_TimeGPT, pd.DataFrame([df_TimeGPT.iloc[-1]])], ignore_index=True)
     row_Index = len(df_TimeGPT) -1
     df_TimeGPT.loc[len(df_TimeGPT)-1,"Date"] =  df.loc[1,"Date"]
     df_TimeGPT.loc[len(df_TimeGPT)-1,"SA_News"] = df.loc[1,"SA_News"]
