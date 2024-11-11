@@ -420,31 +420,7 @@ with col2[1]:
 
 
 st.markdown('---')
-'''
-st.title('GenAI Based Generic Forecast')
-st.markdown('Excluding External Influcencing Factors and Parameters')
-col3 = st.columns((5,5,5), gap = 'medium')
-with col3[0]:
-    st.markdown("Stock Price Forecast")
 
-    fig5 = nixtla_client.plot(df_GenAI_Stock,timegpt_fcst_df_stock, time_col = 'Date', target_col = 'value')
-    #fig5.update_layout(coloraxis = {'colorscale':'viridis'})
-    #fig5.layout.width = 700
-    #fig5.layout.height = 350
-
-    fig5
-with col3[1]:
-    st.markdown("Quarterly Revenue Performance Forecast")
-    fig6 = nixtla_client.plot(df_GenAI_QRev,timegpt_fcst_df_QRev, time_col = 'Date', target_col = 'value')
-    fig6
-with col3[2]:
-    st.markdown("Yearly Revenue Performance Forecase")
-    fig7 = nixtla_client.plot(df_GenAI_YRev,timegpt_fcst_df_YRev, time_col = 'Date', target_col = 'value')
-    fig7 
-
-
-st.markdown("---")
-'''
 st.title('GenAI Based Advanced Level Company Performance Forecast')
 col4 = st.columns((7,20,3), gap = 'medium')
 with col4[0]:
