@@ -8,4 +8,4 @@ prophet
 openai
 pandasai
 nixtla
-langchain.agents
+langchain
