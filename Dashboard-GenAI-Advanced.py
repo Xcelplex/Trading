@@ -52,7 +52,7 @@ st.set_page_config(
     )
 alt.themes.enable("dark")
 
-default_Ticker = "MSFT"
+default_Ticker = "AAPL"
 today = datetime.date.today()
 date_Diff = today - datetime.timedelta(days = 364)
 start_Date = date_Diff
