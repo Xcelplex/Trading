@@ -7,6 +7,5 @@ yfinance
 prophet
 openai
 pandasai
-OpenAI
 NixtlaClient
 langchain.agents
