@@ -10,3 +10,4 @@ pandasai
 nixtla
 langchain
 vaderSentiment
+seaborn
