@@ -52,8 +52,7 @@ def display_news(news):
     if news:
         st.sidebar.subheader("Latest News and Announcements")
         for article in news[:5]:  # Display the latest 5 news articles
-            #st.sidebar.write(f"**{article['title']}**")
-            st.sidebar.write(article['title'])
+            st.sidebar.write(f"**{article['title']}**")
             st.sidebar.write(f"{article['publisher']}")
             st.sidebar.write(f"[Read more]({article['link']})")
             st.sidebar.write("---")
