@@ -11,3 +11,4 @@ nixtla
 langchain
 vaderSentiment
 seaborn
+pandas-datareader
